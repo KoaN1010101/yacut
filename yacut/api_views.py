@@ -33,4 +33,5 @@ def create_short_link():
     )
     db.session.add(short_link)
     db.session.commit()
-    return jsonify({'short_link': short_link.short, 'url': short_link.original}), 201
+    short_link = 'http://localhost/' + custom_id
+    return jsonify({'short_link': short_link, 'url': data['url']}), 201
