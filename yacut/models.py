@@ -1,5 +1,5 @@
 from datetime import datetime
-from random import choices, randint
+from random import choices
 from string import ascii_letters, digits
 
 from flask import url_for
