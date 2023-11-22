@@ -16,7 +16,7 @@ class URLMap(db.Model):
     def to_dict(self):
         return dict(
             url=self.original,
-            short_link=url_for('index_view', short_id=self.short, _external=True)
+            short_link=url_for('short_link_url', short_id=self.short, _external=True)
         )
 
     def get_unique_short_id():

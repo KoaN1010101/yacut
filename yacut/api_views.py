@@ -1,4 +1,6 @@
-from flask import jsonify, request
+from http import HTTPStatus
+
+from flask import jsonify, request, url_for
 
 from . import app, db
 from .error_handlers import InvalidAPIUsage
@@ -21,7 +23,7 @@ def create_short_link():
     if 'url' not in data:
         raise InvalidAPIUsage('"url" является обязательным полем!')
     custom_id = data.get('custom_id')
-    if not custom_id or custom_id is None:
+    if not custom_id:
         custom_id = URLMap.get_unique_short_id()
     if URLMap.query.filter_by(short=custom_id).first():
         raise InvalidAPIUsage('Предложенный вариант короткой ссылки уже существует.')
@@ -33,5 +35,5 @@ def create_short_link():
     )
     db.session.add(short_link)
     db.session.commit()
-    short_link = 'http://localhost/' + custom_id
-    return jsonify({'short_link': short_link, 'url': data['url']}), 201
+    short_link = url_for('short_link_url', short_id=custom_id, _external=True)
+    return jsonify({'short_link': short_link, 'url': data['url']}), HTTPStatus.CREATED
