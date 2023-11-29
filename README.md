@@ -13,21 +13,27 @@
 
 # Установка
 ## Склонируйте репозиторий:
-git clone git@github.com:AbbadonAA/yacut.git
+```
+git clone git@github.com:KoaN1010101/yacut.git
+```
 ## Активируйте venv и установите зависимости:
+```
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
 ## Создайте в корневой директории файл .env со следующим наполнением:
+```
 FLASK_APP=yacut
 FLASK_ENV=development или production
 DATABASE_URI=sqlite:///db.sqlite3
 SECRET_KEY=<ваш_секретный_ключ>
-
+```
 # Управление:
 ## Для локального запуска выполните команду:
-
+```
 flask run
+```
 ##  Сервис будет запущен и доступен по следующим адресам:
 
 http://localhost/ - главная страница сервиса;
@@ -54,11 +60,6 @@ http://localhost/api/id/short_id/ - эндпоинт, принимающий GET
 {
 "url": "string"
 }
-Полная спецификация API доступна в репозитории - файл openapi.yml
 
-Лицензия
-MIT License
-Автор
-Pushkarev Anton
-
-pushkarevantona@gmail.com
+# Автор
+Никулин Владимир
